@@ -21,6 +21,18 @@ typedef struct
 	volatile uint32_t CSR; // Control/Status Register 0x24
 } RCC_TypeDef;
 
+typedef struct {
+	volatile uint32_t CRL; // Port configuration register low 0x00
+	volatile uint32_t CRH; // Port configuration register high 0x04
+	volatile uint32_t IDR; // Port input data register 0x08
+	volatile uint32_t ODR; // Port output data register 0x0C
+	volatile uint32_t BSRR; // Port bit set/reset register 0x10
+	volatile uint32_t BRR; // Port bit reset register 0x14
+	volatile uint32_t LCKR; // Port configuration lock register 0x18
+} GPIO_TypeDef;
+
+
 #define RCC ((RCC_TypeDef *) RCC_BASE)
+#define GPIOA ((GPIO_TypeDef *) GPIOA_BASE)
 
 #endif // STM32F103_H
