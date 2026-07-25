@@ -8,7 +8,8 @@ void gpio_init(void)
 
 	// PA5 as output (push-pull, max speed 2 MHz)
 	GPIOA->CRL &= ~(GPIO_CRL_MODE_5_Msk | GPIO_CRL_CNF_5_Msk); // Clear CNF and MODE bits for PA5
-	GPIOA->CRL |= (0x1 << GPIO_CRL_MODE_5_Pos); // Set MODE bits for PA5
+	GPIOA->CRL |= (GPIO_MODE_OUTPUT_2MHz << GPIO_CRL_MODE_5_Pos) |
+				  (GPIO_CNF_GP_PUSH_PULL << GPIO_CRL_CNF_5_Pos); // Set MODE and CNF bits for PA5
 }
 
 // Set the specified pin
