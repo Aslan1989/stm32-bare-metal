@@ -4,7 +4,7 @@ OBJCOPY = arm-none-eabi-objcopy
 
 BUILD = build
 
-CFLAGS = -mcpu=cortex-m3 -mthumb -Wall -Wextra
+CFLAGS = -mcpu=cortex-m3 -mthumb -Wall -Wextra -g -O0
 
 SRC = src/main.c
 STARTUP = startup/startup.s
