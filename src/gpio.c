@@ -4,7 +4,7 @@
 void gpio_init(void)
 {
 	// Implementation for GPIO initialization
-	RCC->APB2ENR |= (1 << 2); // Enable GPIOA clock
+	RCC->APB2ENR |= RCC_APB2ENR_IOPAEN; // Enable GPIOA clock
 
 	// PA5 as output (push-pull, max speed 2 MHz)
 	GPIOA->CRL &= ~(0xF << 20); // Clear CNF and MODE bits for PA5

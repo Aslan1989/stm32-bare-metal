@@ -31,8 +31,14 @@ typedef struct {
 	volatile uint32_t LCKR; // Port configuration lock register 0x18
 } GPIO_TypeDef;
 
-
 #define RCC ((RCC_TypeDef *) RCC_BASE)
 #define GPIOA ((GPIO_TypeDef *) GPIOA_BASE)
+
+/* RCC */
+
+#define RCC_APB2ENR_IOPAEN (1U << 2) // I/O port A clock enable
+
+/* GPIO */
+#define GPIO_PIN_5 5U // Pin 5
 
 #endif // STM32F103_H
