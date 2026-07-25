@@ -6,6 +6,11 @@ MEMORY
 
 SECTIONS
 {
+	.isr_vector :
+	{
+		*(.isr_vector)
+	} > FLASH
+	
 	.text :
 	{
 		*(.text)
