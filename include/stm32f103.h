@@ -41,4 +41,10 @@ typedef struct {
 /* GPIO */
 #define GPIO_PIN_5 5U // Pin 5
 
+/* GPIO CRL configuration */
+#define GPIO_CRL_MODE_5_Pos 20U // Mode bits for PA5
+#define GPIO_CRL_CNF_5_Pos 22U // Configuration bits for PA5
+
+#define GPIO_CRL_MODE_5_Msk (0x3U << GPIO_CRL_MODE_5_Pos) // Mask for MODE bits
+#define GPIO_CRL_CNF_5_Msk (0x3U << GPIO_CRL_CNF_5_Pos) // Mask for CNF bits
 #endif // STM32F103_H
