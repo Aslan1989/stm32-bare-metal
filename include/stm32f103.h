@@ -17,6 +17,8 @@ typedef struct
 	volatile uint32_t AHBENR; // AHB Peripheral Clock Enable Register 0x14
 	volatile uint32_t APB2ENR; // APB2 Peripheral Clock Enable Register 0x18
 	volatile uint32_t APB1ENR; // APB1 Peripheral Clock Enable Register 0x1C
+	volatile uint32_t BDCR; // Backup Domain Control Register 0x20
+	volatile uint32_t CSR; // Control/Status Register 0x24
 } RCC_TypeDef;
 
 #define RCC ((RCC_TypeDef *) RCC_BASE)
