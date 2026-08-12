@@ -1,36 +1,34 @@
 CC = arm-none-eabi-gcc
-AS = arm-none-eabi-gcc
 OBJCOPY = arm-none-eabi-objcopy
 
 BUILD = build
 
-CFLAGS = -mcpu=cortex-m3 -mthumb -Wall -Wextra -g -O0
+CFLAGS = -mcpu=cortex-m3 -mthumb -Wall -Wextra -g -O0 -Iinclude
 
-SRC = src/main.c
-STARTUP = startup/startup.s
+OBJ = \
+	$(BUILD)/main.o \
+	$(BUILD)/gpio.o \
+	$(BUILD)/startup.o
 
 all: $(BUILD)/firmware.bin
 
-OBJ = $(BUILD)/main.o \
-	$(BUILD)/startup.o
+$(BUILD)/main.o: src/main.c include/gpio.h
+	@mkdir -p $(BUILD)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BUILD)/main.o: src/main.c
+$(BUILD)/gpio.o: src/gpio.c include/gpio.h
 	@mkdir -p $(BUILD)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/startup.o: startup/startup.s
-	mkdir -p $(BUILD)
-	$(AS) $(CFLAGS) -c $< -o $@
+	@mkdir -p $(BUILD)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/firmware.elf: $(OBJ)
-	$(CC) $(CFLAGS) \
-	-nostdlib \
-	-T linker.ld \
-	$(OBJ) \
-	-o $@
+	$(CC) $(CFLAGS) -nostdlib -T linker.ld $(OBJ) -o $@
 
 $(BUILD)/firmware.bin: $(BUILD)/firmware.elf
 	$(OBJCOPY) -O binary $< $@
 
 clean:
-	rm -rf build
+	rm -rf $(BUILD)
