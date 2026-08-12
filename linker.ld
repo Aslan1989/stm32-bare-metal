@@ -6,6 +6,7 @@ MEMORY
 
 _estack = ORIGIN(RAM) + LENGTH(RAM);
 
+ENTRY(Reset_Handler) 
 SECTIONS
 {
 	.isr_vector :

@@ -13,8 +13,8 @@
 # _estack will be resolved by the linker
 .global _estack
 
-# Interrupt Vector Table
-.section .isr_vector
+# Interrupt Vector Table a - allocatable
+.section .isr_vector, "a", %progbits
 
 .word _estack
 .word Reset_Handler
