@@ -14,10 +14,10 @@
 .global _estack
 
 # Interrupt Vector Table a - allocatable
-.section .isr_vector, "a", %progbits
+.section .isr_vector, "a"
 
 .word _estack
-.word Reset_Handler
+.word Reset_Handler + 1
 
 .text
 .thumb
