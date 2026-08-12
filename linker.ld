@@ -5,27 +5,32 @@ MEMORY
 }
 
 _estack = ORIGIN(RAM) + LENGTH(RAM);
+
 SECTIONS
 {
 	.isr_vector :
 	{
-		*(.isr_vector)
+		KEEP(*(.isr_vector))
 	} > FLASH
 
 	.text :
 	{
 		*(.text)
+		*(.text.*)
 		*(.rodata)
+		*(.rodata.*)
 	} > FLASH
 
 	.data :
 	{
 		*(.data)
+		*(.data.*)
 	} > RAM
 
 	.bss :
 	{
 		*(.bss)
+		*(.bss.*)
 		*(COMMON)
 	} > RAM
 }
