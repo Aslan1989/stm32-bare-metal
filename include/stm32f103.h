@@ -6,6 +6,8 @@
 #define RCC_BASE 0x40021000UL // U-unsigned L-Long
 #define GPIOA_BASE 0x40010800UL
 #define USART2_BASE 0x40004400UL
+#define TIM2 ((TIM_TypeDef *)0x40000000U)
+#define NVIC_ISER0 (*(volatile uint32_t *)0xE000E100U)
 
 typedef struct
 {
@@ -30,6 +32,22 @@ typedef struct {
 	volatile uint32_t BRR; // Port bit reset register 0x14
 	volatile uint32_t LCKR; // Port configuration lock register 0x18
 } GPIO_TypeDef;
+
+typedef struct
+{
+    volatile uint32_t CR1;
+    volatile uint32_t CR2;
+    volatile uint32_t SMCR;
+    volatile uint32_t DIER;
+    volatile uint32_t SR;
+    volatile uint32_t EGR;
+    volatile uint32_t CCMR1;
+    volatile uint32_t CCMR2;
+    volatile uint32_t CCER;
+    volatile uint32_t CNT;
+    volatile uint32_t PSC;
+    volatile uint32_t ARR;
+} TIM_TypeDef;
 
 #define RCC ((RCC_TypeDef *) RCC_BASE)
 #define GPIOA ((GPIO_TypeDef *) GPIOA_BASE)
